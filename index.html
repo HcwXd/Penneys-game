@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Penney's Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="input_wrap">
+        <div class="label">A's Sequence:</div>
+        <input type="text" class="seq_input" id="seq_A" value="HHH" />
+      </div>
+      <div class="input_wrap">
+        <div class="label">B's Sequence:</div>
+        <input type="text" class="seq_input" id="seq_B" value="THH" />
+      </div>
+      <div class="input_wrap">
+        <div class="label">Head Prob:</div>
+        <input type="text" class="seq_input" id="head_prob" value="0.5" />
+      </div>
+      <div class="input_wrap">
+        <div class="label">Repeat Times:</div>
+        <input type="text" class="seq_input" id="rep_times" value="1000" />
+      </div>
+
+      <div class="start_btn">Start</div>
+      <div class="result_wrap">
+        <div class="label">A's Winning Prob:</div>
+        <div class="result_display">?</div>
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>
