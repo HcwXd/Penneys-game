@@ -6,10 +6,8 @@ const start_btn = document.querySelector('.start_btn');
 const result_wrap = document.querySelector('.result_wrap');
 const result_display = document.querySelector('.result_display');
 
-start_btn.addEventListener('click', countProb);
 const randomToss = (headProb) => (Math.random() < headProb ? 'H' : 'T');
-
-function countProb() {
+start_btn.addEventListener('click', () => {
   const seqA = input_a.value.toUpperCase();
   const seqB = input_b.value.toUpperCase();
   const headProb = +input_head_prob.value;
@@ -23,7 +21,6 @@ function countProb() {
     return;
   }
   result_display.innerHTML = 'Running';
-  console.log(seqA, seqB, headProb, repTimes);
   let aWiningCnt = 0;
   window.setTimeout(() => {
     for (let idx = 0; idx < repTimes; idx++) {
@@ -40,4 +37,4 @@ function countProb() {
     }
     result_display.innerHTML = `${((aWiningCnt / repTimes) * 100).toFixed(1)}%`;
   }, 1);
-}
+});
