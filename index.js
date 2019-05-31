@@ -7,6 +7,55 @@ const result_wrap = document.querySelector('.result_wrap');
 const result_display = document.querySelector('.result_display');
 
 const randomToss = (headProb) => (Math.random() < headProb ? 'H' : 'T');
+
+const opB = (flipFirst = true) => {
+  const seqA = input_a.value.toUpperCase();
+  let seqB = flipFirst ? (seqA[seqA.length - 1] === 'H' ? 'T' : 'H') : seqA[seqA.length - 1];
+  seqB += seqA.slice(0, seqA.length - 1);
+  input_b.value = seqB;
+};
+let bestB = [];
+
+const gen = (len = 5) => {
+  let ans = [];
+  per('');
+  function per(par) {
+    if (par.length === len) {
+      ans.push(par);
+      return;
+    } else {
+      per(par + 'T');
+      per(par + 'H');
+    }
+  }
+  for (let a of ans) {
+    let data = [];
+    for (let b of ans) {
+      data.push(playSingleMatch(a, b));
+    }
+    data.sort((a, b) => a[0] - b[0]);
+    bestB.push(data[0]);
+  }
+  bestB.sort((a, b) => a[0] - b[0]);
+};
+
+function playSingleMatch(seqA, seqB, repTimes = 1000, headProb = 0.5) {
+  let aWiningCnt = 0;
+  for (let idx = 0; idx < repTimes; idx++) {
+    let curSeq = [];
+    while (true) {
+      curSeq.push(randomToss(headProb));
+      if (curSeq.length > seqA.length) curSeq.shift();
+      if (curSeq.join('') === seqA) {
+        aWiningCnt++;
+        break;
+      }
+      if (curSeq.join('') === seqB) break;
+    }
+  }
+  return [aWiningCnt / repTimes, `${seqA} vs ${seqB}`];
+}
+
 start_btn.addEventListener('click', () => {
   const seqA = input_a.value.toUpperCase();
   const seqB = input_b.value.toUpperCase();
