@@ -62,8 +62,10 @@ func main() {
 	repTime := 1000
 	headProb := 0.5
 
-	if len(os.Args) == 2 {
+	if len(os.Args) == 4 {
 		seqLen, _ = strconv.Atoi(os.Args[1])
+		repTime, _ = strconv.Atoi(os.Args[2])
+		headProb, _ = strconv.ParseFloat(os.Args[3], 64)
 	}
 
 	combArray := make([]string, 0)
@@ -79,7 +81,7 @@ func main() {
 		sort.Slice(curAns, func(i, j int) bool { return curAns[i].winRate < curAns[j].winRate })
 		ans = append(ans, curAns[0])
 	}
-	sort.Slice(ans, func(i, j int) bool { return ans[i].winRate < ans[j].winRate })
+	sort.Slice(ans, func(i, j int) bool { return ans[i].winRate > ans[j].winRate })
 
 	for _, r := range ans {
 		fmt.Print(r.matchComb + " | ")
