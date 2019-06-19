@@ -56,6 +56,23 @@ function playSingleMatch(seqA, seqB, repTimes = 1000, headProb = 0.5) {
   return [aWiningCnt / repTimes, `${seqA} vs ${seqB}`];
 }
 
+function L(seqA, seqB) {
+  let ans = 0;
+  let len = seqA.length;
+  for (let idx = 0; idx < len; idx++) {
+    if (seqA.slice(idx, len) === seqB.slice(0, len - idx)) {
+      ans += 2 ** (len - idx - 1);
+    }
+  }
+  return ans;
+}
+
+function Con(a, b) {
+  let i = L(b, b) - L(b, a);
+  let j = L(a, a) - L(a, b);
+  return i / (i + j);
+}
+
 start_btn.addEventListener('click', () => {
   const seqA = input_a.value.toUpperCase();
   const seqB = input_b.value.toUpperCase();
@@ -84,6 +101,7 @@ start_btn.addEventListener('click', () => {
         if (curSeq.join('') === seqB) break;
       }
     }
+    console.log(Con(seqA, seqB));
     result_display.innerHTML = `${((aWiningCnt / repTimes) * 100).toFixed(1)}%`;
   }, 1);
 });
