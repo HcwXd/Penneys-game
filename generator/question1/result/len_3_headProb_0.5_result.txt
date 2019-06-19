@@ -1,0 +1,11 @@
+Length: 3 	 HeadProb: 0.500000 	 RepTime: 1000
+A   vs B   | A's Winning Rate
+
+THH vs TTH | 0.351000
+HTT vs HHT | 0.340000
+HTH vs HHT | 0.338000
+THT vs TTH | 0.326000
+HHT vs THH | 0.270000
+TTH vs HTT | 0.264000
+TTT vs HTT | 0.126000
+HHH vs THH | 0.106000
