@@ -59,6 +59,8 @@ func singleMatch(seqA string, seqB string, repTime int, headProb float64) Result
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	seqLen := 5
+	repTime := 1000
+	headProb := 0.5
 
 	if len(os.Args) == 2 {
 		seqLen, _ = strconv.Atoi(os.Args[1])
@@ -71,7 +73,7 @@ func main() {
 	for _, seqA := range combArray {
 		curAns := make([]Result, 0)
 		for _, seqB := range combArray {
-			r := singleMatch(seqA, seqB, 1000, 0.5)
+			r := singleMatch(seqA, seqB, repTime, headProb)
 			curAns = append(curAns, r)
 		}
 		sort.Slice(curAns, func(i, j int) bool { return curAns[i].winRate < curAns[j].winRate })
