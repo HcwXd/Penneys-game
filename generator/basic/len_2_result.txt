@@ -1,0 +1,6 @@
+A  vs B  | A's Winning Rate
+
+HT vs HH | 0.500000
+TH vs HT | 0.500000
+HH vs TH | 0.250000
+TT vs HT | 0.250000
