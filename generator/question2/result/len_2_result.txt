@@ -1,0 +1,4 @@
+HH vs TH | 0.250000 => tH vs TH | 0.500000
+TT vs HT | 0.250000 => hT vs HT | 0.500000
+HT vs HH | 0.500000 => tT vs HH | 0.600000
+TH vs HT | 0.500000 => hH vs HT | 0.666667
